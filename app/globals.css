@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -18,4 +20,23 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.input-field{
+  @apply border-2 outline-none focus:border-black rounded-lg w-full lg:w-2/3 mx-auto my-3;
+}
+
+.task-card{
+  @apply sm:h-36 py-2 border-s-8 border-s-orange-400 bg-red-50 shadow-lg 
+  rounded-md overflow-hidden flex items-center ps-2 my-2;
+}
+
+.scroll-bar{
+  @apply [&::-webkit-scrollbar]:w-2
+  [&::-webkit-scrollbar-track]:rounded-full
+  [&::-webkit-scrollbar-track]:bg-gray-100
+  [&::-webkit-scrollbar-thumb]:rounded-full
+  [&::-webkit-scrollbar-thumb]:bg-black
+  dark:[&::-webkit-scrollbar-track]:bg-neutral-700
+  dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500;
 }
