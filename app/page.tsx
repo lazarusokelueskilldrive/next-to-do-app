@@ -6,6 +6,7 @@ import {useStore} from "./store/store"
 import { useState } from "react";
 import ConfirmationModal from "./components/confirmationModal";
 import EditModal from "./components/editModal";
+import toast from 'react-hot-toast';
 
 type Task = {
   task: '';
@@ -28,8 +29,9 @@ export default function Home() {
 
   const handleAdd = () =>{
     
-    if(!todo.task || !todo.date ) return alert("Please fill the form correctly");
+    if(!todo.task || !todo.date ) return  toast.error("Please fill the form correctly");
     addTodo(todo);
+    toast.success("Task added successfully!")
     setTodo({
       task: '',
       date: '',
@@ -41,6 +43,7 @@ export default function Home() {
     
     if (selectedIndex !== null) {
       remove(selectedIndex);
+      toast.success("Task deleted successfully!")
       setSelectedIndex(0); 
       setConfirmationModalStatus(false); 
     }
@@ -73,6 +76,7 @@ export default function Home() {
     if (updatedTask !== null) {
       update(selectedIndex, updatedTask);
       setSelectedIndex(0); 
+      toast.success("Task edited successfully!")
       setEditModalStatus(false); 
       setTodo({
         task: '',
@@ -85,7 +89,10 @@ export default function Home() {
   const handleComplete = (index: number) =>{
     debugger
     if (index !== null) {
-      completed(index)
+      completed(index);
+      toast.success("Task completed kudos!",{
+        icon: '👏'
+      })
     }
   }
 
@@ -109,7 +116,7 @@ export default function Home() {
 
           </textarea>
           <input type="date" className="input-field h-10 p-2"  onChange={(e) => setTodo(prevState => ({ ...prevState, date: e.target.value }))}
-            value={todo.date} />
+            value={todo.date}  min={new Date().toISOString().split('T')[0]}/>
           <button
             onClick={handleAdd} 
             className="bg-black hover:text-black hover:bg-transparent hover:outline
