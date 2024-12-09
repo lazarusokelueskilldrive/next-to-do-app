@@ -31,6 +31,11 @@ body {
   rounded-md overflow-hidden flex items-center ps-2 my-2;
 }
 
+.task-completed-card{
+  @apply sm:h-36 py-2 border-s-8 border-s-green-600 bg-red-50 shadow-lg 
+  rounded-md overflow-hidden flex items-center ps-2 my-2;
+}
+
 .scroll-bar{
   @apply [&::-webkit-scrollbar]:w-2
   [&::-webkit-scrollbar-track]:rounded-full

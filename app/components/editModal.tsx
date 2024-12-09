@@ -5,9 +5,14 @@ import { useState } from "react";
 
 const EditModal = (props: any) => {
 
-    const [editTask, setEditask] = useState(props.task);
+    const [editTask, setEditask] = useState({
+        task: props.data.task,
+        date: props.data.date,
+        status: false,
+    });
 
     const handleSave = () => {
+        debugger
         props.confirmEditAction(editTask);  
     };
 
@@ -22,11 +27,13 @@ const EditModal = (props: any) => {
                             <h3 className="text-base font-semibold text-gray-900" id="modal-title">Edit Task</h3>
                                 <textarea placeholder="your todo here" maxLength={320}
                                     className="border-2 outline-none focus:border-black rounded-lg h-40 p-2 w-full"  
-                                    value={editTask}
-                                    onChange={(event) => setEditask(event.target.value)}
+                                    value={editTask.task}
+                                    onChange={(e) => setEditask(prev => ({...prev, task: e.target.value}))}
                                 >
                                 </textarea>
-                                <input type="date" className="input-field h-10 p-2 lg:w-full"  />
+                                <input type="date" className="input-field h-10 p-2 lg:w-full" 
+                                     value={editTask.date}
+                                    onChange={(e) => setEditask(prev => ({...prev, date: e.target.value}))} />
                             </div>
                         </div>
                         <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
