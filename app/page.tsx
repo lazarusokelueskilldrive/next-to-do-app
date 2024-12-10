@@ -71,9 +71,9 @@ export default function Home() {
     });
   }
 
-  const confirmEditAction = (updatedTask: string) =>{
-    
-    if (updatedTask !== null) {
+  const confirmEditAction = (updatedTask: any) =>{
+    debugger
+    if ((updatedTask.task !== null && updatedTask.task !== "") && (updatedTask.date !== "") ) {
       update(selectedIndex, updatedTask);
       setSelectedIndex(0); 
       toast.success("Task edited successfully!")
@@ -83,6 +83,8 @@ export default function Home() {
         date: '',
         status: false,
       });
+    }else{
+      toast.error("Invalid, fill the form correctly!")
     }
   }
 
@@ -109,7 +111,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col lg:flex-row w-full mb-4 px-5 pt-6">
         <div className="w-full lg:w-1/2 flex flex-col justify-center px-3 items-center">
-          <textarea placeholder="your todo here" maxLength={320}
+          <textarea placeholder="your todo here" maxLength={250}
             className="input-field h-40 p-2" onChange={(e) => setTodo(prevState  => ({...prevState, task: e.target.value}))}
             value={todo.task} 
             >

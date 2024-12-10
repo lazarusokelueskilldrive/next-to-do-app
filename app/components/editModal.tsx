@@ -25,7 +25,7 @@ const EditModal = (props: any) => {
                         <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                             <div className="">
                             <h3 className="text-base font-semibold text-gray-900" id="modal-title">Edit Task</h3>
-                                <textarea placeholder="your todo here" maxLength={320}
+                                <textarea placeholder="your todo here" maxLength={250}
                                     className="border-2 outline-none focus:border-black rounded-lg h-40 p-2 w-full"  
                                     value={editTask.task}
                                     onChange={(e) => setEditask(prev => ({...prev, task: e.target.value}))}
